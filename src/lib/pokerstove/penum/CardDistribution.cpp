@@ -184,6 +184,13 @@ void CardDistribution::removeCards(const CardSet& dead)
             _weights[_handList[i]] = 0.0;
 }
 
+void CardDistribution::removeHand(const CardSet& dead)
+{
+    map<CardSet, double>::iterator it = _weights.find(dead);
+    if (it != _weights.end())
+        it->second = 0.0;
+}
+
 double CardDistribution::weight() const
 {
     double total = 0.0;

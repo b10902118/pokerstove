@@ -43,5 +43,6 @@ message(STATUS "swig_add_library OUTPUT_DIR ${PYTHON_PROJECT_DIR}/${PS_TARGET}")
 # python includes should be in the standard place.
 target_include_directories(${PS_TARGET} PRIVATE ..  ${Python3_INCLUDE_DIRS})
 set_property(TARGET ${PS_TARGET} PROPERTY SWIG_USE_TARGET_INCLUDE_DIRECTORIES ON)
-target_link_libraries(${PS_TARGET} PRIVATE peval penum)
+
+target_link_libraries(${PS_TARGET} PRIVATE peval penum -static-libgcc -static-libstdc++)
 

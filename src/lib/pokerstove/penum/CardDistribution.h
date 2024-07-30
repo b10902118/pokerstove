@@ -37,6 +37,8 @@ public:
 
     void removeCards(const CardSet& dead);
 
+    void removeHand(const CardSet& dead);
+
     /**
      * return the total weight in the distribution
      */

@@ -21,7 +21,8 @@ enable_testing()
 #
 # set up boost
 #
-set(Boost_USE_STATIC_LIBS OFF)
+#set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 find_package(Boost COMPONENTS program_options REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
@@ -51,3 +52,9 @@ install(TARGETS penum)
 install(TARGETS ps-colex)
 install(TARGETS ps-eval)
 install(TARGETS ps-lut)
+
+# Link statically against the C++ standard library and libc
+set(CMAKE_SHARED_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+
+# Ensure all external libraries are linked statically
+set(BUILD_SHARED_LIBS OFF)
